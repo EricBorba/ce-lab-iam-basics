@@ -1,7 +1,7 @@
 # IAM Basics Lab - Solution
 
-**Student Name:** [Your Name]  
-**Date Completed:** [Date]
+**Student Name:** [Eric Rodrigues Borba]  
+**Date Completed:** [21/04/2026]
 
 ---
 
@@ -116,8 +116,8 @@
                 "s3:DeleteObject"
             ],
             "Resource": [
-                "arn:aws:s3:::dev-bucket",
-                "arn:aws:s3:::dev-bucket/*"
+                "arn:aws:s3:::dev-bucket-ericborba",
+                "arn:aws:s3:::dev-bucket-ericborba/*"
             ]
         }
     ]
@@ -138,9 +138,9 @@
 ![MFA Enabled](screenshots/mfa-enabled.png)
 
 **MFA Details:**
-- User: [alice / admin user]
+- User: [alice]
 - Device type: Virtual MFA
-- Authenticator app: [Google Authenticator / Microsoft Authenticator / Authy]
+- Authenticator app: [Microsoft Authenticator]
 - Status: ✅ Active
 
 ---
@@ -174,16 +174,21 @@
 
 ### Challenge 3: CLI Access Keys
 
-**Alice Access Key Created:** [Yes / No]
+**Alice Access Key Created:** [Yes]
 
 **CLI Test Output:**
 ```bash
 $ aws s3 ls --profile alice
-[Paste output here]
+[(base) ericborba@Erics-Air ce-lab-iam-basics % aws s3 ls --profile alice
+2026-04-21 14:45:04 alice-ironhack-myfirstbucket
+2026-04-21 14:50:48 bob-ironhack-myfirstbucket
+2026-04-21 14:54:08 charlie-ironhack-myforstbucket
+2026-04-21 15:05:35 dev-bucket-ericborba
+]
 ```
 
 **Screenshot:** [If applicable]
-
+![Alice CLI](screenshots/alice-cli.png)
 ---
 
 ## Reflection Questions
@@ -192,7 +197,7 @@ $ aws s3 ls --profile alice
 
 **Your Answer:**
 
-[Explain benefits: easier management, consistency, scalability, etc.]
+[Groups let you assign permissions to multiple users at once (e.g., developers) instead of doing it one by one. If something changes, you update the policy in the group and everyone inside automatically gets the update. It's faster and cleaner.]
 
 ---
 
@@ -200,7 +205,7 @@ $ aws s3 ls --profile alice
 
 **Your Answer:**
 
-[Discuss: security risks, accidental changes, compliance issues, etc.]
+[Everyone would have full power over your AWS account being capable of deleting resources, modifying services, assigning privileges, even wiping out data. One mistake or one compromised account could take down your entire infrastructure. That's why you follow the principle of least privilege.]
 
 ---
 
@@ -208,7 +213,7 @@ $ aws s3 ls --profile alice
 
 **Your Answer:**
 
-[Propose structure: project-based groups, role-based access, tagging strategy, etc.]
+[I'd create one group per project and assign each developer to the group that matches their project. That way permissions are scoped to what each team actually needs, and managing access changes stays simple and clean.]
 
 ---
 
@@ -216,7 +221,7 @@ $ aws s3 ls --profile alice
 
 **Your Answer:**
 
-[Explain: user deletion is permanent, permissions can be recreated but history lost, etc.]
+[Deleting an IAM user is permanent (the user and their credentials are gone). You can't recover them, but you can recreate the user and reattach the same policies. What you lose forever though is the activity history and any access keys that were tied to that user.]
 
 ---
 
@@ -224,36 +229,36 @@ $ aws s3 ls --profile alice
 
 **What was most challenging about this lab?**
 
-[Your reflection]
+[Staying focused while assigning policies because there are so many of them that it's easy to accidentally attach the wrong one to the wrong user.]
 
 ---
 
 **What IAM best practice will you always follow?**
 
-[Your reflection]
+[Least privilege, without a doubt. Give users only what they need to do their job]
 
 ---
 
 **How does IAM help implement the principle of least privilege?**
 
-[Your reflection]
+[IAM lets you control exactly what each user, group, or role can and can't do through policies. Instead of giving broad access, you attach only the specific permissions someone needs]
 
 ---
 
 ## Checklist
 
-- [ ] All 3 users created (alice, bob, charlie)
-- [ ] Both groups created (Developers, DevOps)
-- [ ] Permissions tested for each user
-- [ ] Custom policy created and tested
-- [ ] MFA enabled for at least one user
-- [ ] All screenshots captured
-- [ ] All reflection questions answered
-- [ ] Policy JSON file saved
-- [ ] Work committed to Git
-- [ ] Pull request created
+- [x] All 3 users created (alice, bob, charlie)
+- [x] Both groups created (Developers, DevOps)
+- [x] Permissions tested for each user
+- [x] Custom policy created and tested
+- [x] MFA enabled for at least one user
+- [x] All screenshots captured
+- [x] All reflection questions answered
+- [x] Policy JSON file saved
+- [x] Work committed to Git
+- [x] Pull request created
 
 ---
 
-**Completed By:** [Your Name]  
-**Date:** [Date]
+**Completed By:** [Eric Rodrigues Borba]  
+**Date:** [21/04/2026]
